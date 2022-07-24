@@ -15,6 +15,10 @@ def index(request):
 
         wb = openpyxl.load_workbook(excel_file)
 
+        # getting all sheets
+        sheets = wb.sheetnames
+        print(sheets)
+
         # getting a particular sheet by name out of many sheets
         worksheet = wb["Sheet1"]
         print(worksheet)
@@ -22,6 +26,9 @@ def index(request):
         # getting active sheet
         active_sheet = wb.active
         print(active_sheet)
+
+        # reading a cell
+        print(worksheet["A1"].value)
 
         excel_data = list()
         # iterating over the rows and
