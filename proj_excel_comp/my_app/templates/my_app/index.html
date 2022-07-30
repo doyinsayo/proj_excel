@@ -5,27 +5,55 @@
         </title>
     </head>
     <body style="margin-top: 30px;margin-left: 30px;">
-        <form action="{% url "my_app:index" %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="file"
-                   title="Upload excel file"
-                   name="excel_file"
-                   style="border: 1px solid black; padding: 5px;"
-                   required="required">
-            <p>
-            <input type="submit"
-                   value="Upload"
-                   style="border: 1px solid green; padding:5px; border-radius: 2px; cursor: pointer;">
-        </form>
-
-        <p></p>
-        <hr>
-
-        {% for row in excel_data %}
-            {% for cell in row %}
-                {{ cell }}&nbsp;&nbsp;
+        <div class="form-1">
+            <form action="{% url 'my_app:index' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file"
+                       title="Upload excel file"
+                       name="excel_file"
+                       style="border: 1px solid black; padding: 5px;"
+                       required="required">
+                <p>
+                <input type="submit"
+                       value="Upload"
+                       style="border: 1px solid green; padding:5px; border-radius: 2px; cursor: pointer;">
+            </form>
+    
+            <p></p>
+            <hr>
+    
+            {% for row in excel_data %}
+                {% for cell in row %}
+                    {{ cell }}&nbsp;&nbsp;
+                {% endfor %}
+                <br>
             {% endfor %}
-            <br>
-        {% endfor %}
+            <hr>
+        </div>
+        <div class="form-2">
+            <form action="{% url 'my_app:file-2' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file"
+                       title="Upload excel file"
+                       name="excel_file"
+                       style="border: 1px solid black; padding: 5px;"
+                       required="required">
+                <p>
+                <input type="submit"
+                       value="Upload"
+                       style="border: 1px solid green; padding:5px; border-radius: 2px; cursor: pointer;">
+            </form>
+    
+            <p></p>
+            <hr>
+    
+            {% for row in excel_data_2 %}
+                {% for cells in row %}
+                    {{ cells }}&nbsp;&nbsp;
+                {% endfor %}
+                <br>
+            {% endfor %}
+            <hr>
+        </div>
     </body>
 </html>
